@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Tic-Tac-Toe</title>
+    
+    <script type="text/javascript" src="raphael-min.js"></script>
+    <script type="text/javascript" src="underscore-min.js"></script>
+
+    <script type="text/javascript" src="tictactoe_board.js"></script>
+    <script type="text/javascript" src="tictactoe_actiontable.js"></script>
+    <script type="text/javascript" src="tictactoe.js"></script>
+    <script type="text/javascript">
+/*
+
+Tic-Tac-Toe game in javascript using Raphaël, and Underscore.js.
+
+The game board is represented by a one-dimensional array where the elements
+map to board locations like so:
+
+0|1|2
+-----
+3|4|5
+-----
+6|7|8
+
+A value of 0 for a position means the square is blank, 1 is player 1 (X, the
+user), 2 is player 2 (O, the computer).
+
+Because tic-tac-toe is so simple, we can just pre-compute the optimal moves
+for each possible tic-tac-toe game state. There are 3**9 or about 20k possible
+game states, most of which would not be reached because someone would win
+before that state was achieved.  Then, given a game board, we can just look up
+where the computer should place an O.
+
+All the actual work happens inside of the ActionTable.prototype.populate
+function. This function takes about 300 ms (in Chrome) to run on my computer
+with a blank board. This table could be pre-computed or only calculated after
+the first move to make it faster.
+
+*/
+
+window.onload = function() {
+    var tic_tac_toe_board = new TicTacToe.Game("gameboard", 100);
+};
+    </script>
+
+    <style type="text/css">
+body {
+    font-family: Arial;
+    font-size: 15px;
+    color: #5882b7;
+}
+
+h1 {
+    text-align: center;
+}
+
+#gameboard {
+    margin: 0 auto;
+}
+
+.source-link {
+    margin: 30px;
+    text-align: center;
+}
+    </style>
+</head>
+
+<body>
+<h1>Tic-Tac-Draw</h1>
+<div id="gameboard"></div>
+<div class="source-link"><a href="TicTacToe.tar.gz">TicTacToe.tar.gz</a></div>
+</body>
+</html>
